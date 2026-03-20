@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: backend
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  datasource:
+    url: jdbc:postgresql://db:5432/veneda_db
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  mail:
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: 587
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            trust: smtp.gmail.com
+
+server:
+  port: 8080
+  address: 0.0.0.0
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:superlongsecretkeythatisatleast256bitsforhmacsha256algorithm}
+    access-token-expiration-ms: 900000      # 15 minuter
+    refresh-token-expiration-ms: 604800000  # 7 dagar
+  cors:
+    allowed-origins: ${CORS_ORIGINS:http://localhost:3000}
+  stripe:
+    secret-key: ${STRIPE_SECRET_KEY:sk_test_placeholder}
+    webhook-secret: ${STRIPE_WEBHOOK_SECRET:whsec_placeholder}
+    success-url: ${FRONTEND_URL:http://localhost:3000}/cookbook?success=true
+    cancel-url: ${FRONTEND_URL:http://localhost:3000}/recipes
+  aws:
+    access-key: ${AWS_ACCESS_KEY}
+    secret-access-key: ${AWS_SECRET_ACCESS_KEY}
+    region: ${AWS_REGION:us-east-1}
+    s3-bucket: ${AWS_S3_BUCKET:veneda-images}
