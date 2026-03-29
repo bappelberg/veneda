@@ -45,7 +45,7 @@ app:
     success-url: ${FRONTEND_URL:http://localhost:3000}/cookbook?success=true
     cancel-url: ${FRONTEND_URL:http://localhost:3000}/recipes
   aws:
-    access-key: ${AWS_ACCESS_KEY}
-    secret-access-key: ${AWS_SECRET_ACCESS_KEY}
-    region: ${AWS_REGION:us-east-1}
-    s3-bucket: ${AWS_S3_BUCKET:veneda-images}
+    access-key: ${APP_AWS_ACCESS_KEY}
+    secret-access-key: ${APP_AWS_SECRET_ACCESS_KEY}
+    region: ${APP_AWS_REGION:us-east-1}
+    s3-bucket: ${APP_AWS_S3_BUCKET:veneda-images}
